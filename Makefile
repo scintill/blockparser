@@ -95,6 +95,13 @@ all:parser
 	@${CPLUS} -MD ${INC} ${COPT}  -c cb/transactions.cpp -o .objs/transactions.o
 	@mv .objs/transactions.d .deps
 
+.objs/palindromes.o : cb/palindromes.cpp
+	@echo c++ -- $<
+	@mkdir -p .deps
+	@mkdir -p .objs
+	${CPLUS} -MD ${INC} ${COPT}  -c $< -o $@
+	@mv .objs/palindromes.d .deps
+
 .objs/opcodes.o : opcodes.cpp
 	@echo c++ -- opcodes.cpp
 	@mkdir -p .deps
@@ -139,6 +146,7 @@ OBJS=                       \
     .objs/simpleStats.o     \
     .objs/taint.o           \
     .objs/transactions.o    \
+    .objs/palindromes.o     \
     .objs/opcodes.o         \
     .objs/parser.o          \
     .objs/rmd160.o          \
